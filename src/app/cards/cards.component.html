@@ -1,0 +1,8 @@
+<div *ngIf="showCards" style="display: flex; justify-content: space-between">
+  <div *ngFor="let course of courses">
+    <app-card
+      (startCourseEvent)="toggleVisibility(!$event)"
+      [course]="course"
+    ></app-card>
+  </div>
+</div>
