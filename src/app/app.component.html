@@ -9,7 +9,11 @@
     justify-content: center;
   "
 >
-  <div>EZ-LEARNING</div>
-  <app-cards [courses]="courses"></app-cards>
+  <div style="display: flex">
+    <div>EZ-LEARNING</div>
+    <button (click)="back()" *ngIf="hasStarted">Back</button>
+  </div>
+  <app-cards></app-cards>
   <app-course></app-course>
+  <app-quiz></app-quiz>
 </div>

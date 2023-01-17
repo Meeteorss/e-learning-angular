@@ -1,0 +1,16 @@
+<div *ngIf="showQuiz">
+  <div>WELCOME TO THE {{ selectedQuiz.course.title.toUpperCase() }} QUIZ</div>
+  <div>
+    <div *ngFor="let question of selectedQuiz.questions">
+      <div>Question {{ question.question }}</div>
+      <div style="display: flex; flex-direction: column">
+        <button
+          (click)="answer(question.answer, choice)"
+          *ngFor="let choice of question.choices"
+        >
+          {{ choice }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

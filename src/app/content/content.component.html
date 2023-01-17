@@ -1,0 +1,14 @@
+<div
+  *ngIf="selectedSection"
+  style="display: flex; flex-direction: column; padding: 32px"
+>
+  <div>{{ selectedSection.title }}</div>
+  <div>{{ selectedSection.content }}</div>
+  <button
+    (click)="takeQuiz()"
+    style="width: 200px"
+    *ngIf="selectedSection.content"
+  >
+    Take Quiz
+  </button>
+</div>

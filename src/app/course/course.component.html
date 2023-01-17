@@ -1,4 +1,7 @@
-<div style="display: flex">
-  <div>Sidebar</div>
-  <div>Content</div>
+<div *ngIf="showCourse">
+  <div>WELCOME TO THE {{ selectedCourse.title }}</div>
+  <div style="display: flex; width: 1000px">
+    <app-sidebar></app-sidebar>
+    <app-content></app-content>
+  </div>
 </div>
