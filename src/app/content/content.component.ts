@@ -21,6 +21,10 @@ export class ContentComponent implements OnInit {
 
   selectedSection!: Section;
   takeQuiz() {
+    console.log(
+      'SELECTED COURSE ',
+      this.quizService.getQuizByCourse(this.courseService.getSelectedCourse())
+    );
     this.quizService.setQuiz(
       this.quizService.getQuizByCourse(this.courseService.getSelectedCourse())
     );

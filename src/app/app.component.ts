@@ -1,12 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CourseService } from './course.service';
-import {
-  Course,
-  getCourseById,
-  node_course,
-  react_course,
-  typescript_course,
-} from './data/courses';
+
 import { QuizService } from './quiz.service';
 import { isEmpty } from './utils/utils';
 
@@ -24,12 +18,17 @@ export class AppComponent implements OnInit {
     this.courseService.selectedCourse$.subscribe((value) => {
       this.hasStarted = !isEmpty(value);
     });
+    this.quizService.selectedQuiz$.subscribe((value) => {
+      this.quizStarted = !isEmpty(value);
+    });
   }
   hasStarted!: boolean;
+  quizStarted: boolean = false;
 
   back() {
     this.courseService.setCourse({});
     this.courseService.setSection({});
     this.quizService.setQuiz({});
+    this.quizService.setCurrentQuestionIndex(0);
   }
 }

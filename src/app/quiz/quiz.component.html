@@ -1,16 +1,78 @@
 <div *ngIf="showQuiz">
-  <div>WELCOME TO THE {{ selectedQuiz.course.title.toUpperCase() }} QUIZ</div>
-  <div>
-    <div *ngFor="let question of selectedQuiz.questions">
-      <div>Question {{ question.question }}</div>
-      <div style="display: flex; flex-direction: column">
-        <button
-          (click)="answer(question.answer, choice)"
-          *ngFor="let choice of question.choices"
-        >
-          {{ choice }}
-        </button>
-      </div>
+  <div
+    style="font-size: xx-large; font-weight: bold; padding: 12px; margin: 12px"
+  >
+    WELCOME TO THE {{ selectedQuiz.course.title.toUpperCase() }} QUIZ
+  </div>
+  <div *ngIf="!isFinished">
+    <div style="font-weight: bold; font-size: x-large">
+      Question{{ cpt + 1 }}: {{ currentQst.question }}
+    </div>
+    <div style="display: flex; flex-direction: column">
+      <button
+        style="margin: 12px; padding: 6px; font-weight: bold; font-size: large"
+        (click)="answer(currentQst.answer, choice)"
+        *ngFor="let choice of currentQst.choices"
+      >
+        {{ choice }}
+      </button>
+    </div>
+  </div>
+  <div *ngIf="isFinished">
+    <div style="font-size: xx-large">Quiz Finished</div>
+    <div style="font-size: large">
+      Your score is {{ score }} / {{ selectedQuiz.questions.length }}
+    </div>
+  </div>
+  <div
+    style="background-color: beige; width: 800px; margin: 0 auto; padding: 16px"
+    *ngIf="showCert"
+  >
+    <div
+      style="
+        color: black;
+        text-align: center;
+        font-size: xx-large;
+        font-weight: bolder;
+        margin: 12px 0;
+      "
+    >
+      {{ selectedQuiz.course.title.toLocaleUpperCase() }}'S CERTIFICAT
+    </div>
+    <div
+      style="
+        color: black;
+        text-align: center;
+        font-weight: bold;
+        font-size: xx-large;
+        margin: 12px 0;
+      "
+    >
+      Congratulations on achieving the {{ selectedQuiz.course.title }}
+    </div>
+    <div
+      style="
+        color: black;
+        text-align: center;
+        font-weight: bold;
+        font-size: x-large;
+        margin: 12px 0;
+      "
+    >
+      This certifiese that Mr.John Doe has completed the
+      {{ selectedQuiz.course.title }} And Awarded this Certificat by:
+      EZ-LEARNING ltd
+    </div>
+    <div
+      style="
+        color: black;
+        text-align: center;
+
+        font-size: large;
+        margin: 12px 0;
+      "
+    >
+      Date: {{ dateCert }}
     </div>
   </div>
 </div>

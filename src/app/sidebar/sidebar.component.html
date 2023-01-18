@@ -1,12 +1,31 @@
-<div style="display: flex; flex-direction: column">
+<div
+  style="
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(37, 37, 37);
+    padding: 24px;
+    border-radius: 5%;
+    min-width: 400px;
+  "
+>
   <div
     style="display: flex; flex-direction: column"
     *ngFor="let chapter of selectedCourse.chapters"
   >
-    <p>{{ chapter.title }}</p>
+    <p style="font-size: xx-large">{{ chapter.id }}. {{ chapter.title }}</p>
     <div style="margin-left: 16px" *ngFor="let section of chapter.sections">
-      <button (click)="selectSection(chapter, section)">
-        {{ section.title }}
+      <button
+        style="
+          background-color: transparent;
+          border: none;
+          color: beige;
+          font-size: large;
+          margin-top: 4px;
+          text-decoration: underline;
+        "
+        (click)="selectSection(chapter, section)"
+      >
+        {{ chapter.id }}.{{ section.id }}. {{ section.title }}
       </button>
     </div>
   </div>
